@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import useAxios from '../hooks/useAxios';
-import { FaThumbsUp } from 'react-icons/fa';
+import { FaHeart, FaThumbsUp } from 'react-icons/fa';
 import toast from 'react-hot-toast';
+import { GiLoveHowl } from 'react-icons/gi';
+import { FaClover } from 'react-icons/fa6';
+import Authcontext from '../context/Authcontext';
 
 const ArtDetails = () => {
+    const {user}= use(Authcontext);
     const [art,setArt] = useState(null);
     const [refetch,setRefetch] = useState(false);
     const {id} = useParams();
@@ -34,6 +38,34 @@ const ArtDetails = () => {
             
            })
     }
+
+    const newArt = {
+        art:art?._id,
+        imageUrl:art?.imageUrl,
+        title: art?.title,
+        category:art?.category,
+        userName:art?.userName,
+        description:art?.description,
+        totalArtworks:art?.totalArtworks,
+        favorite_by:user?.email,
+
+    }
+    // post to my favorite
+    const handleFavorite = ()=>{
+        axiosInstance.post(`/favorites`,newArt)
+        .then(data=>{
+            console.log(data.data);
+            if(data.data.insertedId){
+                toast.success("Art added to my favorite section");
+            }
+        })
+        .catch(error=>{
+            toast.error('you have already added it to my favorites')
+        })
+        
+    }
+
+
     return (
         <div className='mt-10 space-y-2'>
            <img className='h-52 w-full object-cover bg-amber-200' src={art?.imageUrl} alt="" />
@@ -43,7 +75,7 @@ const ArtDetails = () => {
            <p>total Artworks: {art?.totalArtworks}</p>
            <p className='btn btn-sm btn-dash '>Total likes: {art?.likes}</p>
             <div className='flex justify-start gap-5'>
-                <button className='btn btn-primary'>Add Favorite</button>
+                <button onClick={handleFavorite} className='btn btn-primary'><FaHeart/>Add To Favorite</button>
                 
                 <button onClick={handleLike} className='btn btn-accent rounded-full'><FaThumbsUp />Like</button>
             </div>

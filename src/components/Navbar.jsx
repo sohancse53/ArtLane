@@ -82,16 +82,16 @@ const Navbar = () => {
           }
           <div className="block lg:hidden z-50 cursor-pointer ">
             {open ? (
-              <IoCloseSharp className="text-2xl hover:opacity-75" onClick={handleOpen} />
+              <IoCloseSharp className="text-3xl hover:opacity-75" onClick={handleOpen} />
             ) : (
-              <RxHamburgerMenu className="text-2xl hover:opacity-75" onClick={handleOpen} />
+              <RxHamburgerMenu className="text-3xl hover:opacity-75" onClick={handleOpen} />
             )}
           </div>
         </div>
       </div>
 
       <ul onClick={()=>setOpen(!open)}
-        className={`absolute  z-100 w-full h-[90vh]  block bg-gray-100  lg:hidden text-center  transition-all duration-500 *:m-10 *:text-2xl *:hover:underline ${
+        className={`absolute  z-100 w-full h-[60%]  block bg-gray-100  lg:hidden text-center  transition-all duration-500 *:m-10 *:text-2xl *:hover:underline ${
           open ? "left-0" : "-left-1000"
         }`}
       >

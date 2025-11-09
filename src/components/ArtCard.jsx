@@ -1,4 +1,5 @@
 import React from "react";
+import { FaThumbsUp } from "react-icons/fa";
 import { Link } from "react-router";
 
 const ArtCard = ({art}) => {
@@ -23,10 +24,12 @@ const ArtCard = ({art}) => {
 
         <div className="flex gap-2 mt-1">
           <div className="badge badge-outline">{art.category}</div>
+          <div className="badge badge-outline"><FaThumbsUp/>{art.likes} </div>
+
         </div>
 
         <div className="mt-3">
-          <Link to={`/art-details/${art._id}`} className="btn btn-primary w-full text-sm">View Details</Link>
+          <Link to={`/art-details/${art._id}`} className="btn btn-outline hover:btn-primary transition-all duration-500 w-full text-sm">View Details</Link>
         </div>
       </div>
     </div>

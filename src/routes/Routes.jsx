@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import ArtDetails from "../pages/ArtDetails";
+import Favorite from "../pages/Favorite";
 
 export const router = createBrowserRouter([
     {
@@ -36,7 +37,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/my-favorites',
-                element:<h1>my favorites</h1>
+                element:<Favorite/>
             },
             {
                 path:'/art-details/:id',
