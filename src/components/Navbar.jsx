@@ -26,18 +26,18 @@ const Navbar = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink>Explore Artworks</NavLink>
+        <NavLink to="/explore-artworks">Explore Artworks</NavLink>
       </li>
       {user && (
         <>
           <li>
-            <NavLink>Add Artwork</NavLink>
+            <NavLink to="/add-artwork">Add Artwork</NavLink>
           </li>
           <li>
-            <NavLink>My Gallery</NavLink>
+            <NavLink to="/my-gallery">My Gallery</NavLink>
           </li>
           <li>
-            <NavLink>My Favorites</NavLink>
+            <NavLink to="/my-favorites">My Favorites</NavLink>
           </li>
         </>
       )}

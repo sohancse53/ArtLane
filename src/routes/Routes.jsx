@@ -21,6 +21,22 @@ export const router = createBrowserRouter([
                 path:'/login',
                 Component:Login,
             },
+            {
+                path:'/explore-artworks',
+                element:<h1>explore artworks</h1>
+            },
+            {
+                path:'/add-artwork',
+                element:<h1>Add artworks</h1>
+            },
+            {
+                path:'/my-gallery',
+                element:<h1>my gallery</h1>
+            },
+            {
+                path:'/my-favorites',
+                element:<h1>my favorites</h1>
+            },
         ]     
     }
 ])
