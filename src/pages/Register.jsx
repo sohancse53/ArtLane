@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
+import Authcontext from '../context/Authcontext';
+import toast from 'react-hot-toast';
 
 const Register = () => {
     const [error,setError] = useState('');
+    const {createUser,updateUser,googleLogin} = use(Authcontext);
+    
     const handleRegister = (e)=>{
         e.preventDefault();
         const displayName = e.target.name.value;
@@ -26,8 +30,43 @@ const Register = () => {
             setError('password length must be 6 or greater')
             return
         }
-        console.log(displayName,email,photoURL,password);
+        // console.log(displayName,email,photoURL,password);
+        createUser(email,password)
+        .then(result=>{
+            console.log(result.user);
+            updateUser({displayName,photoURL})
+            .then(()=>{
+                toast.success("You have Registered Successfully");
+                 console.log(result.user);
+            })
+            .catch(error=>{
+                console.log(error.message);
+                setError(error.message);
+                toast.error(error.message);
+            })
+            
+        })
+        .catch(error=>{
+            console.log(error.message);
+            setError(error.message);
+                toast.error(error.message);
+        })
 
+    }
+
+    const handleGoogle = ()=>{
+        setError('');
+        googleLogin()
+        .then(result=>{
+            console.log(result.user);
+            toast.success("Sign ip with google Successful");
+        })
+        .catch(error=>{
+            console.log(error.message);
+            setError(error.message);
+            toast.error(error.message)
+            
+        })
     }
     return (
        
@@ -96,7 +135,7 @@ const Register = () => {
                     <hr className="flex-grow border-gray-300" />
                 </div>
 
-                <button className="w-full flex items-center justify-center border py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <button onClick={handleGoogle} className="w-full flex items-center justify-center border py-2 rounded-lg hover:bg-gray-100 transition-colors">
                     <FcGoogle className="mr-2 text-xl"/> Sign up with Google
                 </button>
 
