@@ -3,6 +3,7 @@ import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import ArtDetails from "../pages/ArtDetails";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
             {
                 path:'/my-favorites',
                 element:<h1>my favorites</h1>
+            },
+            {
+                path:'/art-details/:id',
+                element:<ArtDetails/>
             },
         ]     
     }
