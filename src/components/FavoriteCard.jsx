@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaThumbsUp } from 'react-icons/fa';
+import { IoHeartDislike } from 'react-icons/io5';
+import useAxios from '../hooks/useAxios';
+import toast from 'react-hot-toast';
 
-const FavoriteCard = ({favorite}) => {
+const FavoriteCard = ({favorite,setRefetch,refetch}) => {
+   
+    const axiosInstance = useAxios();
+
+    const handleUnfavorite = ()=>{
+        console.log(favorite?._id);
+        axiosInstance.delete(`/favorites/${favorite?._id}`)
+        .then(data=>{
+            console.log(data.data);
+            if(data.data.deletedCount){
+                toast.success("Unfavoriting Successful")
+               setRefetch(!refetch);
+            }
+            
+        })
+    }
     return (
      <div className="card  bg-base-100 shadow-xl transition-all  hover:-translate-y-2">
       <div className="w-full h-48 overflow-hidden rounded-t-xl">
@@ -21,12 +39,11 @@ const FavoriteCard = ({favorite}) => {
           Art By: <span className="font-medium">{favorite?.userName}</span>
         </p>
 
-        <div className="flex gap-2 mt-1">
+        <div className="flex gap-2 mt-1 justify-between items-center gap-8 px10">
           <div className="badge badge-outline">{favorite?.category}</div>
-          <div className="badge badge-outline"><FaThumbsUp/>{favorite?.likes} </div>
-
+            <button onClick={handleUnfavorite} className='btn btn-sm rounded-full'><IoHeartDislike color='red' className='text-xl'/>Unfavorite</button>
         </div>
-
+           
         
       </div>
     </div>

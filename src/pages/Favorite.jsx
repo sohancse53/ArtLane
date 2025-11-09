@@ -7,14 +7,16 @@ const Favorite = () => {
     const {user} = use(Authcontext);
     const axiosInstance = useAxios();
     const [favorites,setFavorites]= useState([]);
+    const [refetch,setRefetch] = useState(false);
     useEffect(()=>{
         axiosInstance.get(`/favorites?favorite_by=${user?.email}`)
         .then(data=>{
             console.log(data.data);
             setFavorites(data.data);
             
+            
         })
-    },[user,axiosInstance])
+    },[user,axiosInstance,refetch]);
     return (
         <div>
             <h2 className='text-3xl text-center my-5 font-bold'>My favorites</h2>
@@ -22,7 +24,10 @@ const Favorite = () => {
                 {
                     favorites.map(favorite=><FavoriteCard 
                         key={favorite._id}
-                        favorite={favorite}/>)
+                        favorite={favorite}
+                        refetch={refetch}
+                        setRefetch = {setRefetch}
+                        />)
                 }
             </div>
         </div>
