@@ -45,11 +45,11 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="relative flex justify-between items-center  py-2 px-4 shadow">
+      <div className="relative  flex justify-between items-center  py-2 px-4 shadow ">
         <h2 className="text-2xl font-bold">
           Art<span className="text-red-500">Lane</span>
         </h2>
-        <ul className=" hidden  lg:flex gap-5 *:hover:text-primary">{links}</ul>
+        <ul className=" hidden  lg:flex gap-5  *:hover:text-primary">{links}</ul>
         <div className="flex items-center gap-5">
           {
           user 
