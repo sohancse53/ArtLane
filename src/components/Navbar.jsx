@@ -45,10 +45,10 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="relative  flex justify-between items-center  py-2 px-4 shadow ">
-        <h2 className="text-2xl font-bold">
-          Art<span className="text-red-500">Lane</span>
-        </h2>
+      <div className="relative  flex justify-between items-center  py-2 px-4 shadow">
+        <Link to={'/'}  className="text-2xl font-extrabold relative">
+          ArT<span className="text-red-400 font-semibold absolute    top-1 left-9">Lane</span>
+        </Link >
         <ul className=" hidden  lg:flex gap-5  *:hover:text-primary">{links}</ul>
         <div className="flex items-center gap-5">
           {
@@ -91,7 +91,7 @@ const Navbar = () => {
       </div>
 
       <ul onClick={()=>setOpen(!open)}
-        className={`absolute  w-full h-[90vh]  block bg-gray-100  lg:hidden text-center  transition-all duration-500 *:m-10 *:text-2xl *:hover:underline ${
+        className={`absolute  z-100 w-full h-[90vh]  block bg-gray-100  lg:hidden text-center  transition-all duration-500 *:m-10 *:text-2xl *:hover:underline ${
           open ? "left-0" : "-left-1000"
         }`}
       >
