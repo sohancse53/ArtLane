@@ -7,6 +7,7 @@ import ArtDetails from "../pages/ArtDetails";
 import Favorite from "../pages/Favorite";
 import ExploreArtworks from "../pages/ExploreArtworks";
 import AddArtwork from "../pages/AddArtwork";
+import MyGallery from "../pages/MyGallery";
 
 export const router = createBrowserRouter([
     {
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/my-gallery',
-                element:<h1>my gallery</h1>
+                element:<MyGallery/>
             },
             {
                 path:'/my-favorites',

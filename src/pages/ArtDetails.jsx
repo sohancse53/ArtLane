@@ -8,6 +8,7 @@ import { FaClover } from 'react-icons/fa6';
 import Authcontext from '../context/Authcontext';
 
 const ArtDetails = () => {
+    const [myArts,setMyArts]= useState([]);
     const {user}= use(Authcontext);
     const [art,setArt] = useState(null);
     const [refetch,setRefetch] = useState(false);
@@ -23,6 +24,7 @@ const ArtDetails = () => {
         setArt(data.data)
     })
     },[id,axiosInstance,refetch])
+
 
 
     // increase like onclick
@@ -66,13 +68,22 @@ const ArtDetails = () => {
     }
 
 
+    useEffect(()=>{
+        axiosInstance.get(`http://localhost:3000/artworks?email=${art?.userEmail}`)
+        .then(data=>{
+            console.log(data.data);
+            setMyArts(data.data);            
+        })
+    },[art,axiosInstance]);
+    
+
     return (
         <div className='mt-10 space-y-2'>
            <img className='h-52 w-full object-cover bg-amber-200' src={art?.imageUrl} alt="" />
            <p className='text-3xl font-semibold'>Title: {art?.title}</p>
            <p>Artist: {art?.userName}</p>
            <p>description: {art?.description}</p>
-           <p>total Artworks: {art?.totalArtworks}</p>
+           <p>total Artworks: {myArts.length}</p>
            <p className='btn btn-sm btn-dash '>Total likes: {art?.likes}</p>
             <div className='flex justify-start gap-5'>
                 <button onClick={handleFavorite} className='btn btn-primary'><FaHeart/>Add To Favorite</button>
