@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import ArtDetails from "../pages/ArtDetails";
 import Favorite from "../pages/Favorite";
+import ExploreArtworks from "../pages/ExploreArtworks";
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/explore-artworks',
-                element:<h1>explore artworks</h1>
+                element:<ExploreArtworks/>
             },
             {
                 path:'/add-artwork',
