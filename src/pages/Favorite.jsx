@@ -19,6 +19,7 @@ const Favorite = () => {
     },[user,axiosInstance,refetch]);
     return (
         <div>
+            <title>My favorites</title>
             <h2 className='text-3xl text-center my-5 font-bold'>My favorites</h2>
             <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
                 {

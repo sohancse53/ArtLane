@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import ArtDetails from "../pages/ArtDetails";
 import Favorite from "../pages/Favorite";
 import ExploreArtworks from "../pages/ExploreArtworks";
+import AddArtwork from "../pages/AddArtwork";
 
 export const router = createBrowserRouter([
     {
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/add-artwork',
-                element:<h1>Add artworks</h1>
+                element:<AddArtwork/>
             },
             {
                 path:'/my-gallery',
