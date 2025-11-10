@@ -1,45 +1,88 @@
-import React, { use, useEffect, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import useAxios from "../hooks/useAxios";
 
 import ArtCard from "../components/ArtCard";
 import Authcontext from "../context/Authcontext";
 
 const ExploreArtworks = () => {
-    const {user} = use(Authcontext);
+  const filterRef = useRef();
+  const { user } = use(Authcontext);
   const axiosInstance = useAxios();
   const [arts, setArts] = useState([]);
-  const [loading,setLoading]=useState(false);
+  const [filteredArts,setFilteredArts]= useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axiosInstance.get(`/artworks-public`).then((data) => {
       console.log(data.data);
       setArts(data.data);
+      setFilteredArts(data.data);
     });
   }, [axiosInstance]);
 
-  const handleSearch = (e)=>{
+  const handleSearch = (e) => {
     e.preventDefault();
     const searchText = e.target.search.value;
     console.log(searchText);
     setLoading(true);
-    axiosInstance.get(`/search-By-title?title=${searchText}`)
-    .then(data=>{
-        setArts(data.data);
-          setLoading(false);
-    })
-   
+    axiosInstance.get(`/search-By-title?title=${searchText}`).then((data) => {
+      setArts(data.data);
+      setLoading(false);
+    });
+  };
+
+  const handleFilter = ()=>{
+    const cat = filterRef.current.value;
+    if(cat == "Category: Default"){
+      setArts(filteredArts);
+      return;
+    }
+    const filter = filteredArts.filter(art=>art.category == cat);
+    setArts(filter);
+
+  };
+
+ 
   
-  }
   return (
     <div>
       <title>Explore Artworks</title>
-      
-      <h2 className="text-3xl text-center my-5 font-bold">Explore Artworks</h2>
 
-      <form onSubmit={handleSearch} className="join  w-full flex justify-center items-center my-5">
+      <h2 className="text-3xl text-center my-5 font-bold">Explore Artworks - {arts.length}</h2>
+
+      <div className="flex flex-col md:flex-row items-center ">
+      <form
+        onSubmit={handleSearch}
+        className="join  flex-1 flex justify-center items-center my-5"
+      >
         <input name="search" className="input join-item" placeholder="Search" />
-        <button type="submit" className="btn btn-secondary join-item rounded-r-full">{loading?'Searching.....':'Search'}</button>
+        <button
+          type="submit"
+          className="btn btn-secondary join-item rounded-r-full"
+        >
+          {loading ? "Searching....." : "Search"}
+        </button>
       </form>
+
+       <select 
+          ref={filterRef} 
+          onChange={handleFilter}
+          name="category"
+          defaultValue='Filter category'
+          className=" select appearance-none mb-4 md:w-[20%] rounded-full"
+        >
+          <option defaultValue >Category: Default</option>
+          <option>Digital Art</option>
+          <option>Painting & Illustration</option>
+          <option>Sculpture & Crafts</option>
+          <option>Photography</option>
+        </select>
+
+      </div>
+     
+       
+      
+
 
       <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
         {arts.map((art) => (

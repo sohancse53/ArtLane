@@ -53,7 +53,7 @@ const AddArtwork = () => {
                 className="input input-bordered w-full bg-gray-50"
                 type="text"
                 defaultValue={user?.displayName}
-                disabled
+                readOnly
               />
             </div>
             <div>
@@ -63,7 +63,7 @@ const AddArtwork = () => {
                 className="input input-bordered w-full bg-gray-50"
                 type="email"
                 defaultValue={user?.email}
-                disabled
+                readOnly
               />
             </div>
           </div>
@@ -72,6 +72,7 @@ const AddArtwork = () => {
           <div>
             <label className="block mb-1 ">Image URL</label>
             <input
+              required
               name="imageUrl"
               className="input input-bordered w-full"
               type="text"
@@ -83,6 +84,7 @@ const AddArtwork = () => {
           <div>
             <label className="block mb-1 ">Title</label>
             <input
+              required
               name="title"
               className="input input-bordered w-full"
               type="text"
@@ -92,7 +94,7 @@ const AddArtwork = () => {
 
           {/* Category */}
      <div className="w-full">
-           <select name="category" defaultValue="Pick a color" className="w-full select appearance-none">
+           <select required name="category" defaultValue="Pick a color" className="w-full select appearance-none">
   <option disabled={true}>Select a category</option>
   <option>Digital Art</option>
   <option>Painting & Illustration</option>
@@ -104,7 +106,7 @@ const AddArtwork = () => {
           {/* Medium / Tools */}
           <div>
             <label className="block mb-1 ">Medium / Tools</label>
-            <input
+            <input required
               name="mediumTools"
               className="input input-bordered w-full"
               type="text"
@@ -115,7 +117,7 @@ const AddArtwork = () => {
           {/* Description */}
           <div>
             <label className="block mb-1 ">Description</label>
-            <textarea
+            <textarea required
               name="description"
               className="textarea textarea-bordered w-full"
               rows={3}
