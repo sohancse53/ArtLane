@@ -56,7 +56,7 @@ const Navbar = () => {
           ? 
           (
             <div className="dropdown dropdown-hover dropdown-end">
-              <img src={user?.photoURL} tabIndex={0} role="button" className="m-1 rounded-full w-12 h-12 border-2 border-primary object-cover"/>
+              <img referrerPolicy="no-referrer" src={user?.photoURL} tabIndex={0} role="button" className="m-1 rounded-full w-12 h-12 border-2 border-primary object-cover"/>
               <div
                 tabIndex={0}
                 className="dropdown-content card card-sm bg-base-100 z-1 w-64 shadow-md"

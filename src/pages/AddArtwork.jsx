@@ -21,8 +21,8 @@ const AddArtwork = () => {
       userName: e.target.userName.value,
       userEmail: e.target.email.value,
       time: new Date(),
-      totalArtworks: 0,
       likes: 0,
+      artist_photo:user.photoURL
     };
     console.log({ newArt });
     axiosInstance.post('/artworks',newArt)

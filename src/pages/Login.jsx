@@ -1,6 +1,6 @@
 import React, { use, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import Authcontext from '../context/Authcontext';
 import toast from 'react-hot-toast';
 
@@ -8,6 +8,9 @@ const Login = () => {
     const [error,setError]= useState('')
     const {user,logIn,googleLogin}= use(Authcontext);
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
+    
     const handleLogin = (e)=>{
         setError('');
          e.preventDefault();
@@ -16,11 +19,14 @@ const Login = () => {
         console.log(email,password);
         logIn(email,password)
         .then(result=>{
+
             console.log(result.user);
-            
             toast.success('Login Successful');
-            e.target.reset();
-             navigate('/');
+            // e.target.reset();
+            console.log(location.state);
+            
+             navigate(location.state || '/');
+
         })
         .catch(error=>{
             console.log(error.message);
@@ -36,7 +42,7 @@ const Login = () => {
         .then(result=>{
             console.log(result.user);
             toast.success("Sign ip with google Successful");
-            navigate('/');
+             navigate(location.state || '/');
         })
         .catch(error=>{
             console.log(error.message);
@@ -45,6 +51,7 @@ const Login = () => {
             
         })
     }
+    
 
     return (
        <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md mx-auto mt-10">

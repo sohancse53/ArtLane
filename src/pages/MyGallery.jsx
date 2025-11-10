@@ -7,6 +7,7 @@ const MyGallery = () => {
     const axiosInstance = useAxios();
     const {user} = use(Authcontext);
     const [arts,setArts] = useState([]);
+    const [refetch,setRefetch] = useState(false);
 
     useEffect(()=>{
         axiosInstance.get(`/artworks?email=${user?.email}`)
@@ -14,7 +15,7 @@ const MyGallery = () => {
             console.log(data.data);
             setArts(data.data);
         })
-    },[axiosInstance,user]);
+    },[axiosInstance,user,refetch]);
 
     return (
         <div>
@@ -26,6 +27,8 @@ const MyGallery = () => {
                 arts.map(art=><MyGalleryCard
                 key={art?._id}
                 art={art}
+                refetch={refetch}
+                setRefetch={setRefetch}
                 />)
             }
         </div>

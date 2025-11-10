@@ -81,9 +81,14 @@ const ArtDetails = () => {
         <div className='mt-10 space-y-2'>
            <img className='h-52 w-full object-cover bg-amber-200' src={art?.imageUrl} alt="" />
            <p className='text-3xl font-semibold'>Title: {art?.title}</p>
-           <p>Artist: {art?.userName}</p>
+      <div className='bg-amber-200 flex items-center flex-col gap-2'>
+        <h1>Artist</h1>
+           <img src={art?.artist_photo}  className="m-1 rounded-full w-12 h-12 border-2 border-primary object-cover"/>
+             <p className='text-lg font-semibold'>{art?.userName}</p>
+      </div>
            <p>description: {art?.description}</p>
            <p>total Artworks: {myArts.length}</p>
+            
            <p className='btn btn-sm btn-dash '>Total likes: {art?.likes}</p>
             <div className='flex justify-start gap-5'>
                 <button onClick={handleFavorite} className='btn btn-primary'><FaHeart/>Add To Favorite</button>

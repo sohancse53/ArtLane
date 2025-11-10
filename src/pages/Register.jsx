@@ -1,12 +1,14 @@
 import React, { use, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import Authcontext from '../context/Authcontext';
 import toast from 'react-hot-toast';
 
 const Register = () => {
     const [error,setError] = useState('');
-    const {createUser,updateUser,googleLogin} = use(Authcontext);
+    const {createUser,updateUser,googleLogin,setUser} = use(Authcontext);
+    const navigate = useNavigate();
+   
     
     const handleRegister = (e)=>{
         e.preventDefault();
@@ -35,9 +37,16 @@ const Register = () => {
         .then(result=>{
             console.log(result.user);
             updateUser({displayName,photoURL})
-            .then(()=>{
+            .then((result)=>{
                 toast.success("You have Registered Successfully");
-                 console.log(result.user);
+                 console.log(result);
+                 setUser(result);
+
+                 //hard reload
+                 setTimeout(()=>{
+                    window.location.reload();
+                 },500);
+                navigate('/');
             })
             .catch(error=>{
                 console.log(error.message);
@@ -60,6 +69,7 @@ const Register = () => {
         .then(result=>{
             console.log(result.user);
             toast.success("Sign ip with google Successful");
+            navigate('/');
         })
         .catch(error=>{
             console.log(error.message);

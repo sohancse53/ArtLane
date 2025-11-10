@@ -8,48 +8,61 @@ import Favorite from "../pages/Favorite";
 import ExploreArtworks from "../pages/ExploreArtworks";
 import AddArtwork from "../pages/AddArtwork";
 import MyGallery from "../pages/MyGallery";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
-    {
-        path:'/',
-        Component:RootLayout,
-        children:[
-            {
-                index:true,
-                Component:Home
-            },
-            {
-                path:'/register',
-                Component:Register
-            },
-            {
-                path:'/login',
-                Component:Login,
-            },
-            {
-                path:'/explore-artworks',
-                element:<ExploreArtworks/>
-            },
-            {
-                path:'/add-artwork',
-                element:<AddArtwork/>
-            },
-            {
-                path:'/my-gallery',
-                element:<MyGallery/>
-            },
-            {
-                path:'/my-favorites',
-                element:<Favorite/>
-            },
-            {
-                path:'/art-details/:id',
-                element:<ArtDetails/>
-            },
-        ]     
-    }
-])
-
-
-
-
+  {
+    path: "/",
+    Component: RootLayout,
+    children: [
+      {
+        index: true,
+        Component: Home,
+      },
+      {
+        path: "/register",
+        Component: Register,
+      },
+      {
+        path: "/login",
+        Component: Login,
+      },
+      {
+        path: "/explore-artworks",
+        element: <ExploreArtworks />,
+      },
+      {
+        path: "/add-artwork",
+        element: (
+          <PrivateRoute>
+            <AddArtwork />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-gallery",
+        element: (
+          <PrivateRoute>
+            <MyGallery />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-favorites",
+        element: (
+          <PrivateRoute>
+            <Favorite />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/art-details/:id",
+        element: (
+          <PrivateRoute>
+            <ArtDetails />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+]);
