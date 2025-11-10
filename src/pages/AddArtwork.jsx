@@ -91,15 +91,15 @@ const AddArtwork = () => {
           </div>
 
           {/* Category */}
-          <div>
-            <label className="block mb-1 ">Category</label>
-            <input
-              name="category"
-              className="input input-bordered w-full"
-              type="text"
-              placeholder="Enter Category"
-            />
-          </div>
+     <div className="w-full">
+           <select name="category" defaultValue="Pick a color" className="w-full select appearance-none">
+  <option disabled={true}>Select a category</option>
+  <option>Digital Art</option>
+  <option>Painting & Illustration</option>
+  <option>Sculpture & Crafts</option>
+  <option>Photography</option>
+</select>
+     </div>
 
           {/* Medium / Tools */}
           <div>
