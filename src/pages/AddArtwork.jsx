@@ -2,9 +2,11 @@ import React, { use } from "react";
 import Authcontext from "../context/Authcontext";
 import useAxios from "../hooks/useAxios";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AddArtwork = () => {
     const axiosInstance = useAxios();
+    // const instanceSecure = useAxiosSecure();
   const { user } = use(Authcontext);
 
   const handleSubmit = (e) => {
@@ -39,7 +41,7 @@ const AddArtwork = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center  p-4">
-      <div className="w-full max-w-xl bg-white rounded-xl border border-red-50 p-6 shadow-lg">
+      <div className="w-full max-w-xl  rounded-xl border border-red-50 p-6 shadow-lg">
         <h1 className="text-3xl font-semibold  mb-4">Add Artwork</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-sm">
@@ -50,7 +52,7 @@ const AddArtwork = () => {
               <input
                 
                 name="userName"
-                className="input input-bordered w-full bg-gray-50"
+                className="input input-bordered w-full "
                 type="text"
                 defaultValue={user?.displayName}
                 readOnly
@@ -60,7 +62,7 @@ const AddArtwork = () => {
               <label className="block mb-1 ">User Email</label>
               <input
                name="email"
-                className="input input-bordered w-full bg-gray-50"
+                className="input input-bordered w-full "
                 type="email"
                 defaultValue={user?.email}
                 readOnly
@@ -97,8 +99,8 @@ const AddArtwork = () => {
            <select required name="category" defaultValue="Pick a color" className="w-full select appearance-none">
   <option disabled={true}>Select a category</option>
   <option>Digital Art</option>
-  <option>Painting & Illustration</option>
-  <option>Sculpture & Crafts</option>
+  <option>Painting And Illustration</option>
+  <option>Sculpture And Crafts</option>
   <option>Photography</option>
 </select>
      </div>

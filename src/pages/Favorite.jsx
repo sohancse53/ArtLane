@@ -5,7 +5,9 @@ import FavoriteCard from '../components/FavoriteCard';
 
 const Favorite = () => {
     const {user} = use(Authcontext);
+
     const axiosInstance = useAxios();
+    
     const [favorites,setFavorites]= useState([]);
     const [refetch,setRefetch] = useState(false);
     useEffect(()=>{

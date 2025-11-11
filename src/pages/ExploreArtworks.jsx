@@ -7,7 +7,9 @@ import Authcontext from "../context/Authcontext";
 const ExploreArtworks = () => {
   const filterRef = useRef();
   const { user } = use(Authcontext);
+
   const axiosInstance = useAxios();
+
   const [arts, setArts] = useState([]);
   const [filteredArts,setFilteredArts]= useState([]);
   const [loading, setLoading] = useState(false);
@@ -37,8 +39,13 @@ const ExploreArtworks = () => {
       setArts(filteredArts);
       return;
     }
-    const filter = filteredArts.filter(art=>art.category == cat);
-    setArts(filter);
+    setLoading(true);
+   axiosInstance.get(`filter-by-category?category=${cat}`)
+   .then(data=>{
+    console.log(data.data);
+     setArts(data.data);
+     setLoading(false);
+   })
 
   };
 
@@ -73,8 +80,8 @@ const ExploreArtworks = () => {
         >
           <option defaultValue >Category: Default</option>
           <option>Digital Art</option>
-          <option>Painting & Illustration</option>
-          <option>Sculpture & Crafts</option>
+          <option>Painting And Illustration</option>
+          <option>Sculpture And Crafts</option>
           <option>Photography</option>
         </select>
 

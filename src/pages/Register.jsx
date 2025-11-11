@@ -80,14 +80,14 @@ const Register = () => {
     }
     return (
        
-            <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md mx-auto mt-10">
+            <div className="border border-red-100 p-8 rounded-xl shadow-lg w-full max-w-md mx-auto mt-10">
                 <title>Register</title>
                 <h2 className="text-3xl font-bold text-center mb-6">Create an Account</h2>
 
                 <form onSubmit={handleRegister} className="space-y-3">
                     {/* name */}
                     <div>   
-                        <label className="block text-gray-700 font-medium mb-1">Name</label>
+                        <label className="block  font-medium mb-1">Name</label>
                         <input 
                             name='name'
                             type="text" 
@@ -97,7 +97,7 @@ const Register = () => {
                     </div>
                         {/* email */}
                     <div>
-                        <label className="block text-gray-700 font-medium mb-1">Email</label>
+                        <label className="block  font-medium mb-1">Email</label>
                         <input 
                             name='email'
                             type="email" 
@@ -107,7 +107,7 @@ const Register = () => {
                     </div>
                         {/* photo */}
                     <div>
-                        <label className="block text-gray-700 font-medium mb-1">Photo URL</label>
+                        <label className="block  font-medium mb-1">Photo URL</label>
                         <input 
                             name ='photoURL'
                             type="text" 
@@ -117,7 +117,7 @@ const Register = () => {
                     </div>
                                 {/* password */}
                     <div>
-                        <label className="block text-gray-700 font-medium mb-1">Password</label>
+                        <label className="block  font-medium mb-1">Password</label>
                         <input 
                             name='password'
                             type="password" 
@@ -133,7 +133,7 @@ const Register = () => {
 
                     <button 
                         type="submit" 
-                        className="btn btn-secondary text-base-100 w-full rounded-lg"
+                        className="btn btn-secondary  w-full rounded-lg"
                     >
                        Register
                     </button>
@@ -145,7 +145,7 @@ const Register = () => {
                     <hr className="flex-grow border-gray-300" />
                 </div>
 
-                <button onClick={handleGoogle} className="w-full flex items-center justify-center border py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <button onClick={handleGoogle} className="btn btn-outline hover:btn-primary w-full flex items-center justify-center border py-2 rounded-lg ">
                     <FcGoogle className="mr-2 text-xl"/> Sign up with Google
                 </button>
 

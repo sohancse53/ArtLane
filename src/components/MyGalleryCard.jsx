@@ -4,11 +4,13 @@ import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
 import Authcontext from "../context/Authcontext";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyGalleryCard = ({ art, setRefetch, refetch }) => {
   const {user}= use(Authcontext);
   const updateRef = useRef();
   const axiosInstance = useAxios();
+  // const instanceSecure = useAxiosSecure();
     
   const handleDelete = () => {
     // console.log("click");
@@ -115,7 +117,7 @@ const MyGalleryCard = ({ art, setRefetch, refetch }) => {
               <input
                 
                 name="userName"
-                className="input input-bordered w-full bg-gray-50"
+                className="input input-bordered w-full "
                 type="text"
                 defaultValue={user?.displayName}
                 disabled
@@ -125,7 +127,7 @@ const MyGalleryCard = ({ art, setRefetch, refetch }) => {
               <label className="block mb-1 ">User Email</label>
               <input
                name="email"
-                className="input input-bordered w-full bg-gray-50"
+                className="input input-bordered w-full "
                 type="email"
                 defaultValue={user?.email}
                 disabled

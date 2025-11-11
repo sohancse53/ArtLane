@@ -3,10 +3,12 @@ import { FaThumbsUp } from 'react-icons/fa';
 import { IoHeartDislike } from 'react-icons/io5';
 import useAxios from '../hooks/useAxios';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const FavoriteCard = ({favorite,setRefetch,refetch}) => {
    
     const axiosInstance = useAxios();
+    // const instanceSecure = useAxiosSecure();
 
     const handleUnfavorite = ()=>{
         console.log(favorite?._id);

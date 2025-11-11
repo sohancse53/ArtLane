@@ -2,8 +2,10 @@ import React, { use, useEffect, useState } from 'react';
 import useAxios from '../hooks/useAxios';
 import Authcontext from '../context/Authcontext';
 import MyGalleryCard from '../components/MyGalleryCard';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const MyGallery = () => {
+    // const axiosInstance = useAxios();
     const axiosInstance = useAxios();
     const {user} = use(Authcontext);
     const [arts,setArts] = useState([]);

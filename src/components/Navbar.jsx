@@ -4,6 +4,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, NavLink } from "react-router";
 import Authcontext from "../context/Authcontext";
 import toast from "react-hot-toast";
+import DarkmodeToggler from "./DarkmodeToggler";
 
 const Navbar = () => {
   const { user,logOut } = use(Authcontext);
@@ -20,6 +21,7 @@ const Navbar = () => {
       toast.success("Log Out Successful");
     })
   }
+
   const links = (
     <>
       <li>
@@ -28,11 +30,13 @@ const Navbar = () => {
       <li>
         <NavLink to="/explore-artworks">Explore Artworks</NavLink>
       </li>
-      {user && (
-        <>
-          <li>
+        <li>
             <NavLink to="/add-artwork">Add Artwork</NavLink>
           </li>
+          
+      {user && (
+        <>
+        
           <li>
             <NavLink to="/my-gallery">My Gallery</NavLink>
           </li>
@@ -46,9 +50,13 @@ const Navbar = () => {
   return (
     <>
       <div className="relative  flex justify-between items-center  py-2 px-4 shadow">
-        <Link to={'/'}  className="text-2xl font-extrabold relative">
+        
+      <div className="flex justify-between items-center gap-15">
+          <Link to={'/'}  className="text-2xl font-extrabold relative">
           ArT<span className="text-red-400 font-semibold absolute    top-1 left-9">Lane</span>
         </Link >
+        <DarkmodeToggler/>
+      </div>
         <ul className=" hidden  lg:flex gap-5  *:hover:text-primary">{links}</ul>
         <div className="flex items-center gap-5">
           {
@@ -56,7 +64,12 @@ const Navbar = () => {
           ? 
           (
             <div className="dropdown dropdown-hover dropdown-end">
-              <img referrerPolicy="no-referrer" src={user?.photoURL} tabIndex={0} role="button" className="m-1 rounded-full w-12 h-12 border-2 border-primary object-cover"/>
+              
+             <div className="flex items-center gap-2">
+                
+               <img referrerPolicy="no-referrer" src={user?.photoURL} tabIndex={0} role="button" className="m-1 rounded-full w-12 h-12 border-2 border-primary object-cover"/>
+             </div>
+              
               <div
                 tabIndex={0}
                 className="dropdown-content card card-sm bg-base-100 z-1 w-64 shadow-md"
@@ -70,13 +83,14 @@ const Navbar = () => {
           ) 
           : 
           (
-            <div className="flex gap-5">
+            <div className="hidden sm:flex gap-5 items-center">
               <Link to="/login" className="btn rounded-full btn-primary">
                 Login
               </Link>
               <Link to="/register" className="btn rounded-full btn-secondary ">
                 Register
               </Link>
+              
             </div>
           )
           }
@@ -88,14 +102,30 @@ const Navbar = () => {
             )}
           </div>
         </div>
+       
       </div>
 
       <ul onClick={()=>setOpen(!open)}
-        className={`absolute  z-100 w-full h-[60%]  block bg-gray-100  lg:hidden text-center  transition-all duration-500 *:m-10 *:text-2xl *:hover:underline ${
+        className={`absolute  z-100 w-full h-[60%]  block bg-base-100  lg:hidden text-center  transition-all duration-500 *:m-10 *:text-2xl *:hover:underline ${
           open ? "left-0" : "-left-1000"
         }`}
       >
         {links}
+        {
+          !user &&
+          <>
+          <li>
+           <Link to="/login" className="btn rounded-full btn-primary">
+                Login
+              </Link>
+        </li>
+        <li>
+            <Link to="/register" className="btn rounded-full btn-secondary ">
+                Register
+              </Link>
+        </li>
+          </>
+        }
       </ul>
     </>
   );

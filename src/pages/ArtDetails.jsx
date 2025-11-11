@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import { GiLoveHowl } from 'react-icons/gi';
 import { FaClover } from 'react-icons/fa6';
 import Authcontext from '../context/Authcontext';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const ArtDetails = () => {
     const [myArts,setMyArts]= useState([]);
@@ -14,6 +15,7 @@ const ArtDetails = () => {
     const [refetch,setRefetch] = useState(false);
     const {id} = useParams();
     const axiosInstance = useAxios();
+    // const instanceSecure = useAxiosSecure()
     console.log(id);
 
     // fetch art by id
@@ -69,7 +71,7 @@ const ArtDetails = () => {
 
 
     useEffect(()=>{
-        axiosInstance.get(`http://localhost:3000/artworks?email=${art?.userEmail}`)
+        axiosInstance.get(`/artworks?email=${art?.userEmail}`)
         .then(data=>{
             console.log(data.data);
             setMyArts(data.data);            
