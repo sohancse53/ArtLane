@@ -164,8 +164,8 @@ const MyGalleryCard = ({ art, setRefetch, refetch }) => {
            <select defaultValue={art?.category} name="category"  className="w-full select appearance-none">
   
   <option>Digital Art</option>
-  <option>Painting & Illustration</option>
-  <option>Sculpture & Crafts</option>
+  <option>Painting And Illustration</option>
+  <option>Sculpture And Crafts</option>
   <option>Photography</option>
 </select>
      </div>

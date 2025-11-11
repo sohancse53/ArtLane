@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, NavLink } from "react-router";
@@ -14,6 +14,7 @@ const Navbar = () => {
     console.log(open);
   };
 
+  
   const handleLogout = ()=>{
     console.log('cle');
     logOut()
@@ -21,6 +22,24 @@ const Navbar = () => {
       toast.success("Log Out Successful");
     })
   }
+
+  //-------------scroll on change color ------------
+  const [color,setColor] = useState(false);
+const handleColor = ()=>{
+  if(window.scrollY>=60){
+    setColor(true)
+  }else{
+    setColor(false);
+  }
+}
+useEffect(()=>{
+  window.addEventListener('scroll',handleColor);
+  return ()=>{
+     window.removeEventListener('scroll',handleColor);
+  }
+},[]);
+
+
 
   const links = (
     <>
@@ -48,7 +67,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <>
+    <div className={`sticky top-0 z-10  w-full mx-auto shadow-md ${color?'bg-success text-white':'bg-transparent'}`}>
       <div className="relative  flex justify-between items-center  py-2 px-4 shadow">
         
       <div className="flex justify-between items-center gap-15">
@@ -106,7 +125,7 @@ const Navbar = () => {
       </div>
 
       <ul onClick={()=>setOpen(!open)}
-        className={`absolute  z-100 w-full h-[60%]  block bg-base-100  lg:hidden text-center  transition-all duration-500 *:m-10 *:text-2xl *:hover:underline ${
+        className={`absolute  w-full h-fit  block bg-base-100  lg:hidden text-center  transition-all duration-500 *:m-10 *:text-2xl *:hover:underline ${
           open ? "left-0" : "-left-1000"
         }`}
       >
@@ -127,7 +146,7 @@ const Navbar = () => {
           </>
         }
       </ul>
-    </>
+    </div>
   );
 };
 
