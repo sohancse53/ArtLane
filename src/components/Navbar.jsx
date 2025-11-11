@@ -67,7 +67,7 @@ useEffect(()=>{
     </>
   );
   return (
-    <div className={`sticky top-0 z-10  w-full mx-auto shadow-md ${color?'bg-success text-white':'bg-transparent'}`}>
+    <div className={`sticky top-0 z-10  w-full mx-auto shadow-md ${color?'bg-success ':'bg-transparent'}`}>
       <div className="relative  flex justify-between items-center  py-2 px-4 shadow">
         
       <div className="flex justify-between items-center gap-15">
