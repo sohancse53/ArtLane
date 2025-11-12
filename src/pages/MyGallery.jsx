@@ -3,8 +3,10 @@ import useAxios from '../hooks/useAxios';
 import Authcontext from '../context/Authcontext';
 import MyGalleryCard from '../components/MyGalleryCard';
 import useAxiosSecure from '../hooks/useAxiosSecure';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const MyGallery = () => {
+    const [loading,setLoading]= useState(false);
     // const axiosInstance = useAxios();
     const axiosInstance = useAxios();
     const {user} = use(Authcontext);
@@ -12,19 +14,27 @@ const MyGallery = () => {
     const [refetch,setRefetch] = useState(false);
 
     useEffect(()=>{
+        setLoading(true);
         axiosInstance.get(`/artworks?email=${user?.email}`)
         .then(data=>{
             console.log(data.data);
             setArts(data.data);
+            setLoading(false)
         })
     },[axiosInstance,user,refetch]);
 
     return (
-        <div>
+        <div className='space-y-5'>
         <title>My Gallery</title>
-      <h2 className="text-3xl text-center my-5 font-bold">My Gallery</h2>
+       <div className="mt-5">
+       <h2 className="text-3xl text-center  font-bold text-primary">My Gallery</h2>
+      <p className="text-center text-gray-600">Total found- <span className="text-primary font-bold">{arts.length}</span> Arts</p>
+     </div>
 
-        <div className='grid gap-5'>
+     {
+        loading?
+        <LoadingSpinner/>
+        :   <div className='grid gap-5'>
             {
                 arts.map(art=><MyGalleryCard
                 key={art?._id}
@@ -34,6 +44,8 @@ const MyGallery = () => {
                 />)
             }
         </div>
+
+     }
 
         </div>
     );

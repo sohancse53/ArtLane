@@ -1,10 +1,12 @@
 import React, { use, useRef } from "react";
-import { FaThumbsUp } from "react-icons/fa";
+import { FaArrowAltCircleRight, FaArrowRight, FaThumbsUp } from "react-icons/fa";
 import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
 import Authcontext from "../context/Authcontext";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Link } from "react-router";
+import { MdDeleteOutline, MdOutlineSystemUpdateAlt } from "react-icons/md";
 
 const MyGalleryCard = ({ art, setRefetch, refetch }) => {
   const {user}= use(Authcontext);
@@ -77,21 +79,25 @@ const MyGalleryCard = ({ art, setRefetch, refetch }) => {
         alt={art?.title}
       />
       <h2 className="text-2xl font-semibold">{art?.title}</h2>
-      <p className="text-slate-600">Category: {art?.category}</p>
-      <p>Dimension: {art?.dimensions}</p>
-      <p> Des: {art?.description}</p>
-      <p>Price: ${art?.price}</p>
-      <p className="btn btn-xs">
-        <FaThumbsUp className="text-xl" />
-        {art?.likes}
-      </p>
-      <div className="flex gap-5 items-center ">
-        <button  onClick={modal} className="btn btn-secondary">
-          Update
+      <p className="text-slate-600 text-xl"><span className="font-bold">Category:</span> {art?.category}</p>
+      <div className="flex gap-5">
+        <p><span className="font-bold">Dimension:</span> {art?.dimensions}</p>
+        <p className="badge badge-dash">Price: ${art?.price}</p>
+      </div>
+     
+      
+     
+      <div className="flex flex-col md:flex-row gap-5 items-center justify-start mt-7">
+      <div className="flex gap-6">
+          <button  onClick={modal} className="btn btn-secondary">
+          Update <MdOutlineSystemUpdateAlt/>
         </button>
         <button onClick={handleDelete} className="btn btn-primary">
-          Remove Art
+          Remove Art <MdDeleteOutline />
         </button>
+      </div>
+
+        <Link to={`/art-details/${art?._id}`} className="btn btn-outline ">View Details <FaArrowRight className="" /></Link>
       </div>
 
 

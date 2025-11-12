@@ -4,6 +4,8 @@ import { IoHeartDislike } from 'react-icons/io5';
 import useAxios from '../hooks/useAxios';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../hooks/useAxiosSecure';
+import { BiDetail } from 'react-icons/bi';
+import { Link } from 'react-router';
 
 const FavoriteCard = ({favorite,setRefetch,refetch}) => {
    
@@ -41,9 +43,10 @@ const FavoriteCard = ({favorite,setRefetch,refetch}) => {
           Art By: <span className="font-medium">{favorite?.userName}</span>
         </p>
 
-        <div className="flex gap-2 mt-1 justify-between items-center gap-8 px10">
+        <div className="flex gap-2 mt-1 justify-between items-center">
           <div className="badge badge-outline">{favorite?.category}</div>
             <button onClick={handleUnfavorite} className='btn btn-sm rounded-full'><IoHeartDislike color='red' className='text-xl'/>Unfavorite</button>
+         
         </div>
            
         

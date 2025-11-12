@@ -3,6 +3,7 @@ import useAxios from "../hooks/useAxios";
 
 import ArtCard from "../components/ArtCard";
 import Authcontext from "../context/Authcontext";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const ExploreArtworks = () => {
   const filterRef = useRef();
@@ -15,10 +16,12 @@ const ExploreArtworks = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true)
     axiosInstance.get(`/artworks-public`).then((data) => {
       console.log(data.data);
       setArts(data.data);
       setFilteredArts(data.data);
+      setLoading(false);
     });
   }, [axiosInstance]);
 
@@ -49,18 +52,21 @@ const ExploreArtworks = () => {
 
   };
 
- 
+
   
   return (
-    <div>
+    <div className="space-y-10">
       <title>Explore Artworks</title>
 
-      <h2 className="text-3xl text-center my-5 font-bold">Explore Artworks - {arts.length}</h2>
+     <div className="mt-5">
+       <h2 className="text-3xl text-center  font-bold text-primary">Explore Artworks</h2>
+      <p className="text-center text-gray-600">Total found- <span className="text-primary font-bold">{arts.length}</span> Arts</p>
+     </div>
 
       <div className="flex flex-col md:flex-row items-center ">
       <form
         onSubmit={handleSearch}
-        className="join  flex-1 flex justify-center items-center my-5"
+        className="join  flex-1 flex justify-center items-center"
       >
         <input name="search" className="input join-item" placeholder="Search" />
         <button
@@ -91,11 +97,16 @@ const ExploreArtworks = () => {
       
 
 
-      <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
+      {
+        loading?
+        <LoadingSpinner/>
+        :
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
         {arts.map((art) => (
           <ArtCard art={art} key={art?._id} />
         ))}
       </div>
+      }
     </div>
   );
 };

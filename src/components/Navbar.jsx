@@ -67,7 +67,7 @@ useEffect(()=>{
     </>
   );
   return (
-    <div className={`sticky top-0 z-10  w-full mx-auto shadow-md ${color?'bg-success ':'bg-transparent'}`}>
+    <div className={`sticky top-0 z-10  w-full mx-auto shadow-md ${color?' rounded-xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg"':'bg-transparent'}`}>
       <div className="relative  flex justify-between items-center  py-2 px-4 shadow">
         
       <div className="flex justify-between items-center gap-15">
@@ -125,7 +125,7 @@ useEffect(()=>{
       </div>
 
       <ul onClick={()=>setOpen(!open)}
-        className={`absolute  w-full h-fit  block bg-base-100  lg:hidden text-center  transition-all duration-500 *:m-10 *:text-2xl *:hover:underline ${
+        className={`absolute shadow-lg w-full h-fit  block bg-base-100  lg:hidden text-center  transition-all duration-500 *:m-10 *:text-2xl *:hover:underline ${
           open ? "left-0" : "-left-1000"
         }`}
       >

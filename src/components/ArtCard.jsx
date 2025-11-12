@@ -1,38 +1,40 @@
 import React from "react";
-import { FaThumbsUp } from "react-icons/fa";
+import { FaDollarSign, FaThumbsUp } from "react-icons/fa";
 import { Link } from "react-router";
 
 const ArtCard = ({art}) => {
   return (
-    <div className="card  bg-base-100 shadow-xl transition-all  hover:-translate-y-2">
-      <div className="w-full h-48 overflow-hidden rounded-t-xl">
+    <div className=" bg-base-100 shadow transition-all  hover:-translate-y-2">
+      <div className="w-full h-52 bg-base-200 flex justify-center items-center">
         <img
           src={art?.imageUrl}
           alt={art?.title}
-          className="w-full h-52 bg-amber-200 object-cover"
+          className="w-full h-full bg-amber-200 object-cover"
         />
       </div>
 
-      <div className="p-4 flex flex-col gap-2">
-        <h2 className="text-lg font-semibold leading-tight">
+      <div className="p-5 flex flex-col  gap-2">
+        <h2 className="text-2xl font-semibold wrap-break-word">
           {art?.title}
         </h2>
+         <p className="badge badge-secondary  rounded-full p-2  wrap-break-word">{art?.category}</p>
 
-        <p className="text-sm text-gray-500">
-          Art By: <span className="font-medium">{art?.userName}</span>
+       
+
+        <div className="flex-1 flex gap-2  justify-between my-2 items-center">
+          <p className="font-semibold wrap-break-word">
+          Artist: <span className="font-light">{art?.userName}</span>
         </p>
-
-        <div className="flex gap-2 mt-1">
-          <div className="badge badge-outline">{art?.category}</div>
-          <div className="badge badge-outline"><FaThumbsUp/>{art?.likes} </div>
+        <p className="badge badge-soft badge-lg wrap-break-word">Price:<FaDollarSign/>{art?.price}</p>
+          
 
         </div>
 
-        <div className="mt-3">
-          <Link to={`/art-details/${art?._id}`} className="btn btn-outline hover:btn-primary transition-all duration-500 w-full text-sm">View Details</Link>
+       
+          <Link to={`/art-details/${art?._id}`} className="btn btn-outline hover:btn-primary transition-all duration-500 w-full text-sm ">View Details</Link>
         </div>
       </div>
-    </div>
+   
   );
 };
 

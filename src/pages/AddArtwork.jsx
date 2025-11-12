@@ -3,8 +3,10 @@ import Authcontext from "../context/Authcontext";
 import useAxios from "../hooks/useAxios";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useNavigate } from "react-router";
 
 const AddArtwork = () => {
+  const navigate = useNavigate();
     const axiosInstance = useAxios();
     // const instanceSecure = useAxiosSecure();
   const { user } = use(Authcontext);
@@ -32,6 +34,7 @@ const AddArtwork = () => {
         console.log(data.data);
         if(data.data.insertedId){
             toast.success("New Artwork added successfully");
+            navigate('/my-gallery')
         }
     })
   };
@@ -40,9 +43,9 @@ const AddArtwork = () => {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center  p-4">
+    <div className=" flex items-center justify-center  p-4">
       <div className="w-full max-w-xl  rounded-xl border border-red-50 p-6 shadow-lg">
-        <h1 className="text-3xl font-semibold  mb-4">Add Artwork</h1>
+        <h1 className="text-3xl font-semibold  mb-4 text-center underline">Add Artwork</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-sm">
           {/* User info */}
@@ -177,7 +180,7 @@ const AddArtwork = () => {
 
           {/* Buttons */}
           <div className="flex gap-3 pt-2">
-            <button type="submit" className="btn btn-primary text-white w-full">
+            <button  type="submit" className="btn btn-primary text-white w-full">
               Add Artwork
             </button>
           </div>

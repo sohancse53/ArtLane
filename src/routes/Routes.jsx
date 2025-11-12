@@ -9,11 +9,15 @@ import ExploreArtworks from "../pages/ExploreArtworks";
 import AddArtwork from "../pages/AddArtwork";
 import MyGallery from "../pages/MyGallery";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../components/ErrorPage";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    errorElement:<ErrorPage/>,
+    hydrateFallbackElement:<LoadingSpinner/>,
     children: [
       {
         index: true,
