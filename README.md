@@ -151,7 +151,6 @@ Form fields:
 ✅ Private Routes with persistence  
 ✅ CRUD (Add, Update, Delete, View)  
 ✅ Likes System (MongoDB `$inc`)  
-✅ Favorites System (`$push` & `$pull`)  
 ✅ Category-based Filtering  
 ✅ Search functionality  
 ✅ Theme persistence  
