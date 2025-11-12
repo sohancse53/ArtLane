@@ -18,7 +18,7 @@ const ExploreArtworks = () => {
   useEffect(() => {
     setLoading(true)
     axiosInstance.get(`/artworks-public`).then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
       setArts(data.data);
       setFilteredArts(data.data);
       setLoading(false);
@@ -28,7 +28,7 @@ const ExploreArtworks = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const searchText = e.target.search.value;
-    console.log(searchText);
+    // console.log(searchText);
     setLoading(true);
     axiosInstance.get(`/search-By-title?title=${searchText}`).then((data) => {
       setArts(data.data);
@@ -45,7 +45,7 @@ const ExploreArtworks = () => {
     setLoading(true);
    axiosInstance.get(`filter-by-category?category=${cat}`)
    .then(data=>{
-    console.log(data.data);
+    // console.log(data.data);
      setArts(data.data);
      setLoading(false);
    })

@@ -16,7 +16,7 @@ const Favorite = () => {
         setLoading(true);
         axiosInstance.get(`/favorites?favorite_by=${user?.email}`)
         .then(data=>{
-            console.log(data.data);
+            // console.log(data.data);
             setFavorites(data.data);
             setLoading(false)
             

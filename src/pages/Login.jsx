@@ -16,20 +16,20 @@ const Login = () => {
          e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email,password);
+        // console.log(email,password);
         logIn(email,password)
         .then(result=>{
 
-            console.log(result.user);
+            // console.log(result.user);
             toast.success('Login Successful');
             // e.target.reset();
-            console.log(location.state);
+            // console.log(location.state);
             
              navigate(location.state || '/');
 
         })
         .catch(error=>{
-            console.log(error.message);
+            // console.log(error.message);
             toast.error(error.message);
             setError(error.message);
         })
@@ -40,12 +40,12 @@ const Login = () => {
         setError('');
         googleLogin()
         .then(result=>{
-            console.log(result.user);
+            // console.log(result.user);
             toast.success("Sign ip with google Successful");
              navigate(location.state || '/');
         })
         .catch(error=>{
-            console.log(error.message);
+            // console.log(error.message);
             setError(error.message);
             toast.error(error.message)
             

@@ -28,10 +28,10 @@ const AddArtwork = () => {
       likes: 0,
       artist_photo:user.photoURL
     };
-    console.log({ newArt });
+    // console.log({ newArt });
     axiosInstance.post('/artworks',newArt)
     .then(data=>{
-        console.log(data.data);
+        // console.log(data.data);
         if(data.data.insertedId){
             toast.success("New Artwork added successfully");
             navigate('/my-gallery')

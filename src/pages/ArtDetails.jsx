@@ -18,13 +18,13 @@ const ArtDetails = () => {
   const { id } = useParams();
   const axiosInstance = useAxios();
   // const instanceSecure = useAxiosSecure()
-  console.log(id);
+  // console.log(id);
 
   // fetch art by id
   useEffect(() => {
     setLoading(true);
     axiosInstance.get(`artworks/${id}`).then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
       setArt(data.data);
       setLoading(false);
     });
@@ -56,7 +56,7 @@ const ArtDetails = () => {
     axiosInstance
       .post(`/favorites`, newArt)
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         if (data.data.insertedId) {
           toast.success("Art added to my favorite section");
         }
@@ -66,9 +66,11 @@ const ArtDetails = () => {
       });
   };
 
+
+  //get all art of a person by email
   useEffect(() => {
     axiosInstance.get(`/artworks?email=${art?.userEmail}`).then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
       setMyArts(data.data);
     });
   }, [art, axiosInstance]);

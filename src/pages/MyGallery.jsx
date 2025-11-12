@@ -17,7 +17,7 @@ const MyGallery = () => {
         setLoading(true);
         axiosInstance.get(`/artworks?email=${user?.email}`)
         .then(data=>{
-            console.log(data.data);
+            // console.log(data.data);
             setArts(data.data);
             setLoading(false)
         })

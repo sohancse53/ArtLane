@@ -13,7 +13,7 @@ const FeaturedArts = () => {
         setLoading(true)
          axiosInstance.get('/featured-artworks')
          .then(data=>{
-             console.log(data.data);
+            //  console.log(data.data);
              setArts(data.data);
              setLoading(false);
          })

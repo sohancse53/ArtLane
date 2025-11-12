@@ -27,7 +27,7 @@ const MyGalleryCard = ({ art, setRefetch, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosInstance.delete(`/artworks/${art?._id}`).then((data) => {
-          console.log(data.data);
+          // console.log(data.data);
           Swal.fire({
             title: "Deleted!",
             text: "Your have deleted successful.",
@@ -40,7 +40,7 @@ const MyGalleryCard = ({ art, setRefetch, refetch }) => {
   };
 
   const modal = () => {
-    console.log("click");
+    // console.log("click");
     updateRef.current.showModal();
   };
 
@@ -58,7 +58,7 @@ const MyGalleryCard = ({ art, setRefetch, refetch }) => {
       time: new Date(),
       
     };
-    console.log({ updatedArt });
+    // console.log({ updatedArt });
     axiosInstance.put(`/update-artworks/${art?._id}`,updatedArt)
     .then(data=>{
         console.log(data.data);
@@ -73,6 +73,7 @@ const MyGalleryCard = ({ art, setRefetch, refetch }) => {
 
   return (
     <div className="p-5 space-y-2 shadow border border-red-100">
+      
       <img
         className="h-56 w-full object-cover "
         src={art?.imageUrl}

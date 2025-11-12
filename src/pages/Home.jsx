@@ -1,22 +1,17 @@
 import React from "react";
 import FeaturedArts from "../components/FeaturedArts";
+import Hero from "../components/Hero";
+import TopArtist from "../components/TopArtist";
+import CommunityHighlights from "../components/CommunityHighlights";
 
 const Home = () => {
   return (
-    <div>
+    <div className="space-y-20">
       <title>Home</title>
-      <p>
-        {" "}
-        Add a Banner/Slider with at least 3 slides highlighting art or trending
-        artists.
-      </p>
-
+      <Hero/>
       <FeaturedArts />
-
-      <p>
-        Add at least 2 extra sections, e.g., 'Top Artists of the Week' and
-        'Community Highlights'.
-      </p>
+      <TopArtist/>
+      <CommunityHighlights/>
     </div>
   );
 };

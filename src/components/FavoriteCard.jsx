@@ -13,10 +13,10 @@ const FavoriteCard = ({favorite,setRefetch,refetch}) => {
     // const instanceSecure = useAxiosSecure();
 
     const handleUnfavorite = ()=>{
-        console.log(favorite?._id);
+        // console.log(favorite?._id);
         axiosInstance.delete(`/favorites/${favorite?._id}`)
         .then(data=>{
-            console.log(data.data);
+            // console.log(data.data);
             if(data.data.deletedCount){
                 toast.success("Unfavoriting Successful")
                setRefetch(!refetch);

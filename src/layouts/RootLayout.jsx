@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 const RootLayout = () => {
     return (
-        <div className='space-y-10'>
+        <div className='space-y-2'>
             <Navbar/>
                 <div className='w-11/12 mx-auto min-h-[88vh]'>
 

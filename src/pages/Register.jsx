@@ -35,11 +35,11 @@ const Register = () => {
         // console.log(displayName,email,photoURL,password);
         createUser(email,password)
         .then(result=>{
-            console.log(result.user);
+            // console.log(result.user);
             updateUser({displayName,photoURL})
             .then((result)=>{
                 toast.success("You have Registered Successfully");
-                 console.log(result);
+                //  console.log(result);
                  setUser(result);
 
                  //hard reload
@@ -49,14 +49,14 @@ const Register = () => {
                 navigate('/');
             })
             .catch(error=>{
-                console.log(error.message);
+                // console.log(error.message);
                 setError(error.message);
                 toast.error(error.message);
             })
             
         })
         .catch(error=>{
-            console.log(error.message);
+            // console.log(error.message);
             setError(error.message);
                 toast.error(error.message);
         })
@@ -67,12 +67,12 @@ const Register = () => {
         setError('');
         googleLogin()
         .then(result=>{
-            console.log(result.user);
+            // console.log(result.user);
             toast.success("Sign ip with google Successful");
             navigate('/');
         })
         .catch(error=>{
-            console.log(error.message);
+            // console.log(error.message);
             setError(error.message);
             toast.error(error.message)
             
