@@ -165,8 +165,8 @@ Form fields:
 
 **👋 Md Shoyaif Rahman**  
 Frontend Developer | MERN Stack Enthusiast  
-📧 [Your Email Here]  
-🌐 [Your Portfolio or LinkedIn]  
+📧 [sohan0020p@gmail.com]  
+🌐 [https://www.linkedin.com/in/md-shoyaif-rahman/]  
 
 ---
 
