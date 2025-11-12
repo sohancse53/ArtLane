@@ -142,17 +142,7 @@ Form fields:
 
 ---
 
-## 🖼️ Preview
 
-| Feature | Screenshot |
-|----------|-------------|
-| Home Page | *(Add Screenshot)* |
-| Explore Artworks | *(Add Screenshot)* |
-| Artwork Details | *(Add Screenshot)* |
-| My Gallery | *(Add Screenshot)* |
-| Favorites | *(Add Screenshot)* |
-
----
 
 ## 💡 Core Functionalities Summary
 
