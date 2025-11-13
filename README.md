@@ -180,7 +180,7 @@ ArtLane isn’t just a gallery — it’s a **creative community platform** that
 
 ### :electric_plug: Installation
 
-To set up AppLab locally:
+To set up ArtLane locally:
 
 ```bash
 # Clone the repository
