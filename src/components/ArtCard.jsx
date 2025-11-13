@@ -5,11 +5,12 @@ import { Link } from "react-router";
 
 const ArtCard = ({art}) => {
   return (
-  <Slide direction="up" cascade={true} damping={0.1}>
+  
      <Fade duration={1000} >
        <div className=" bg-base-100 shadow transition-all  hover:-translate-y-2">
       <div className="w-full h-52 bg-base-200 flex justify-center items-center">
         <img
+        loading="lazy"
           src={art?.imageUrl}
           alt={art?.title}
           className="w-full h-full bg-amber-200 object-cover"
@@ -38,7 +39,7 @@ const ArtCard = ({art}) => {
         </div>
       </div>
      </Fade>
-  </Slide>
+
    
   );
 };
