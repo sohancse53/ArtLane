@@ -176,3 +176,21 @@ ArtLane isn’t just a gallery — it’s a **creative community platform** that
 ---
 
 ### ⭐ If you like this project, don’t forget to star this repo and share it with your fellow art lovers!
+
+
+### :electric_plug: Installation
+
+To set up AppLab locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/sohancse53-applab.git
+
+# Navigate to project directory
+cd sohancse53-applab
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
