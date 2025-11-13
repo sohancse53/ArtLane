@@ -65,7 +65,7 @@ Routes included:
 - Option for **Google signup**
 - Redirects to Home with success toast
 
-> ✅ Email verification & forget password not required
+
 
 ---
 
