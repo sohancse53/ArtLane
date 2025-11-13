@@ -187,7 +187,7 @@ To set up ArtLane locally:
 git clone https://github.com/sohancse53/ArtLane.git
 
 # Navigate to project directory
-cd sohancse53-applab
+cd sohancse53-ArtLane
 
 # Install dependencies
 npm install
