@@ -55,7 +55,7 @@ const ExploreArtworks = () => {
 
   
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 my-20">
       <title>Explore Artworks</title>
 
      <div className="mt-5">
@@ -63,7 +63,7 @@ const ExploreArtworks = () => {
       <p className="text-center text-gray-600">Total found- <span className="text-primary font-bold">{arts.length}</span> Arts</p>
      </div>
 
-      <div className="flex flex-col md:flex-row items-center ">
+      <div className="flex flex-col gap-5 md:gap-0 md:flex-row items-center ">
       <form
         onSubmit={handleSearch}
         className="join  flex-1 flex justify-center items-center"
@@ -101,7 +101,7 @@ const ExploreArtworks = () => {
         loading?
         <LoadingSpinner/>
         :
-        <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4">
         {arts.map((art) => (
           <ArtCard art={art} key={art?._id} />
         ))}

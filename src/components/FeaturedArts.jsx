@@ -19,17 +19,21 @@ const FeaturedArts = () => {
          })
      },[axiosInstance])
 
-     if(loading){return <LoadingSpinner/>}
+    //  if(loading){return <LoadingSpinner/>}
 
      
     return (
         <div>
             <h1 className='text-center text-3xl font-semibold my-5 text-primary'>Featured Artworks</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {
+                loading?<LoadingSpinner/>
+                :
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {
                     arts.map(art=><ArtCard key={art._id} art={art}/>)
                 }
             </div>
+            }
         </div>
     );
 };

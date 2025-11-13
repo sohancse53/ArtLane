@@ -1,10 +1,13 @@
 import React from "react";
+import { Fade, Slide } from "react-awesome-reveal";
 import { FaDollarSign, FaThumbsUp } from "react-icons/fa";
 import { Link } from "react-router";
 
 const ArtCard = ({art}) => {
   return (
-    <div className=" bg-base-100 shadow transition-all  hover:-translate-y-2">
+  <Slide direction="up" cascade={true} damping={0.1}>
+     <Fade duration={1000} >
+       <div className=" bg-base-100 shadow transition-all  hover:-translate-y-2">
       <div className="w-full h-52 bg-base-200 flex justify-center items-center">
         <img
           src={art?.imageUrl}
@@ -34,6 +37,8 @@ const ArtCard = ({art}) => {
           <Link to={`/art-details/${art?._id}`} className="btn btn-outline hover:btn-primary transition-all duration-500 w-full text-sm ">View Details</Link>
         </div>
       </div>
+     </Fade>
+  </Slide>
    
   );
 };

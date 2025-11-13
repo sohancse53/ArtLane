@@ -34,7 +34,7 @@ const MyGallery = () => {
      {
         loading?
         <LoadingSpinner/>
-        :   <div className='grid gap-5'>
+        :   <div className='grid gap-5 mb-20'>
             {
                 arts.map(art=><MyGalleryCard
                 key={art?._id}

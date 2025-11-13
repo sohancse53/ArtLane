@@ -16,7 +16,7 @@ const title = [
 ];
 const Hero = () => {
   return (
-    <div className="relative max-h-96 overflow-hidden">
+    <div className="relative max-h-96 overflow-hidden bg-neutral">
       {/* Image Slider */}
       <ImageGallery
         items={images}
