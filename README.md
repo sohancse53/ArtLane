@@ -184,7 +184,7 @@ To set up ArtLane locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/sohancse53-applab.git
+git clone https://github.com/sohancse53/ArtLane.git
 
 # Navigate to project directory
 cd sohancse53-applab
