@@ -166,6 +166,24 @@ Form includes:
 
 ---
 
+### Dependencies
+- **@emotion/react**: ^11.14.0  
+- **@tailwindcss/vite**: ^4.1.17  
+- **axios**: ^1.13.2  
+- **firebase**: ^12.5.0  
+- **react**: ^19.1.1  
+- **react-awesome-reveal**: ^4.3.1  
+- **react-dom**: ^19.1.1  
+- **react-hot-toast**: ^2.6.0  
+- **react-icons**: ^5.5.0  
+- **react-image-gallery**: ^1.4.0  
+- **react-router**: ^7.9.5  
+- **react-simple-typewriter**: ^5.0.1  
+- **react-spinners**: ^0.17.0  
+- **sweetalert2**: ^11.26.3  
+- **tailwindcss**: ^4.1.17  
+
+
 ## 💡 Core Functionalities Summary
 
 ✅ Fully responsive SPA  
